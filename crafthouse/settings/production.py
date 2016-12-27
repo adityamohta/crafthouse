@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = '^ltesh0wq6eynh!8+8iubv0*i+ozux*9!x^f=e1&)cp1zy31wp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['139.59.3.178', 'localhost', 'crafthouse.me']
 
@@ -129,13 +129,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),   # for local environment.
-    # '/home/django/django_project/django_project/static',                 # for production.
+    os.path.join(BASE_DIR, "static"),
+    '/var/www/static/',
 ]
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")     # cdn = content delivery network.
+STATIC_ROOT = "/var/www/crafthouse.me/static/"
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+MEDIA_ROOT = '/var/www/crafthouse.me/media/'
 
 # crispy forms template pack.
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

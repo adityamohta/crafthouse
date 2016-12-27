@@ -6,7 +6,9 @@ from .models import (
     SliderBackground,
     ServiceBackground,
     Product,
-    ProductImage
+    ProductImage,
+    About,
+    Member
 )
 
 
@@ -17,9 +19,9 @@ class ProductImageInLine(admin.TabularInline):
 
 
 class ProductModelAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'description']
+    list_display = ['id', 'title', 'description', 'in_stock']
     list_display_links = ['id', 'title']
-    list_editable = ['description']
+    list_editable = ['description', 'in_stock']
     search_fields = ['id', 'title']
     list_filter = ['created_at', 'updated_at']
     inlines = [ProductImageInLine]
@@ -33,3 +35,5 @@ admin.site.register(ServiceBackground)
 admin.site.register(GalleryImage)
 admin.site.register(Product, ProductModelAdmin)
 admin.site.register(ProductImage)
+admin.site.register(About)
+admin.site.register(Member)

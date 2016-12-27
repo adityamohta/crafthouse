@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<div class="container">
+  <div class="navigation">
+    <span class="menu"><img src="{% static 'images/menu.png' %}" alt=""/></span>
+    <div class="clearfix"> </div>
+    <ul class="nav1">
+      <li><a href="{% url 'portfolio:home' %}">HOME</a></li>
+      <li><a href="{% url 'portfolio:product_list' %}">PRODUCTS</a></li>
+      <li><a href="{% url 'portfolio:about' %}">ABOUT</a></li>
+      <li><a href="{% url 'portfolio:contact' %}">CONTACT</a></li>
+    </ul>
+    <!-- script for menu -->
+    <script>
+      $( "span.menu" ).click(function() {
+      $( "ul.nav1" ).slideToggle( 300, function() {
+       // Animation complete.
+      });
+      });
+    </script>
+    <!-- //script for menu -->
+  </div>
+  <div class="header-right pull-right">
+    <ul>
+      <li><a href="#"><span class="fb"> </span></a></li>
+      <li><a href="#"><span class="twit"> </span></a></li>
+      <li><a href="#"><span class="pin"> </span></a></li>
+      <li><a href="#"><span class="rss"> </span></a></li>
+{#      <li><a href="#"><span class="drbl"> </span></a></li>#}
+   </ul>
+  </div>
+  <div class="clearfix"> </div>
+</div>

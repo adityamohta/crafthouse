@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    About us | {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+
+    <div id="about" class="about">
+        <div class="container">
+            <div class="about-top heading">
+                <h3>About</h3>
+            </div>
+            <div class="about-bottom">
+                <div class="col-md-6 about-left">
+                    <h4>Integer facilisis auctor ante. Praesent pellentesque, magna eu egestas varius, ligula ipsum pulvinar mauris, quis sodales urna enim eget enim. Donec sed gravida eros, et auctor enim.</h4>
+                    <p>Praesent pulvinar libero at lectus vulputate blandit. Maecenas mauris dolor, commodo id congue nec, laoreet at turpis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec nec bibendum arcu. Morbi pretium eleifend sapien et vulputate.</p>
+                </div>
+                <div class="col-md-6 about-right">
+                    <div class="abt-one">
+                        <div class="abt-left">
+                            <span class="glyphicon glyphicon-gift" aria-hidden="true"> </span>
+                        </div>
+                        <div class="abt-right">
+                            <p>Fusce vulputate vel nisl at condimentum. Etiam efficitur est eu mauris mattis, vestibulum semper libero tempus. Quisque at augue venenatis, varius est ut, tristique justo.</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="abt-one">
+                        <div class="abt-left">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"> </span>
+                        </div>
+                        <div class="abt-right">
+                            <p>Fusce vulputate vel nisl at condimentum. Etiam efficitur est eu mauris mattis, vestibulum semper libero tempus. Quisque at augue venenatis, varius est ut, tristique justo.</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-team">
+        <div class="container">
+            <h3 class="m_1">Our Team</h3>
+            <div class="team-left">
+                <div class="col-sm-3 team-top ts">
+                    <div class="view view-seventh">
+                        <a href="#"><img class="img-responsive" src="{% static 'images/t1.jpg' %}" alt=""></a>
+                        <div class="mask">
+                            <ul class="social-icons">
+                                <li><a href="#"><span class="facebook"> </span></a></li>
+                                <li><a href="#"><span class="twitter"> </span></a></li>
+                            </ul>
+                        </div>
+                        <h4>Contrary to popular</h4>
+                        <p>But I must explain to you how all this mistaken idea of denouncing</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 team-top team-in">
+                    <div class="view view-seventh">
+                        <a href="#"><img class="img-responsive" src="{% static 'images/t2.jpg' %}" alt=""></a>
+                        <div class="mask">
+                            <ul class="social-icons">
+                                <li><a href="#"><span class="facebook"> </span></a></li>
+                                <li><a href="#"><span class="twitter"> </span></a></li>
+                            </ul>
+                        </div>
+                        <h4>Contrary to popular</h4>
+                        <p>But I must explain to you how all this mistaken idea of denouncing</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 team-top">
+                    <div class="view view-seventh">
+                        <a href="#"><img class="img-responsive" src="{% static 'images/t3.jpg' %}" alt=""></a>
+                        <div class="mask">
+                            <ul class="social-icons">
+                                <li><a href="#"><span class="facebook"> </span></a></li>
+                                <li><a href="#"><span class="twitter"> </span></a></li>
+                            </ul>
+                        </div>
+                        <h4>Contrary to popular</h4>
+                        <p>But I must explain to you how all this mistaken idea of denouncing</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 team-top top-team">
+                    <div class="view view-seventh">
+                        <a href="#"><img class="img-responsive" src="{% static 'images/t4.jpg' %}" alt=""></a>
+                        <div class="mask">
+                            <ul class="social-icons">
+                                <li><a href="#"><span class="facebook"> </span></a></li>
+                                <li><a href="#"><span class="twitter"> </span></a></li>
+                            </ul>
+                        </div>
+                        <h4>Contrary to popular</h4>
+                        <p>But I must explain to you how all this mistaken idea of denouncing</p>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

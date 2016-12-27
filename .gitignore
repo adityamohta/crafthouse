@@ -1,0 +1,5 @@
+crafthouse/*.pyc
+portfolio/migrations/0*
+.idea/
+crafthouse/settings/local.py*
+db.sqlite3

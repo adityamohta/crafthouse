@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Product List | {{ block.super }}
+{% endblock title %}
+
+
+{% block content %}
+    <hr>
+    <div class="container">
+        <div id="product" class="welcome">
+            <h3>Products</h3><br><br>
+            <div class="row">
+                {% for product in product_qs %}
+                    <div class="col-sm-4">
+                    <div class="thumbnail thumbnail-custom">
+                        {% if product.productimage_set.all %}
+                            <img src="{{ product.productimage_set.first.image.url }}" alt="image" class="img-responsive  zoom-img">
+                        {% else %}
+                            <img src="{% static 'images/no-image-available.jpg' %}" alt="image" class="img-responsive  zoom-img">
+                        {% endif %}
+                        <div class="caption">
+                            <h2 class="text-center">{{ product.title }}</h2><hr>
+                            <p class="lead">{{ product.description|truncatechars:50 }}</p>
+                            <p><a href="{{ product.get_absolute_url }}" class="btn btn-default btn-block" role="button">Show More</a></p>
+                        </div>
+                    </div>
+                    {% cycle '</div>' '</div>' '</div></div><hr><div class="row">' %}
+                    {% empty %}
+                    <div class="col-sm-4 col-sm-offset-4 wl">
+                        <h2> No products here</h2>
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

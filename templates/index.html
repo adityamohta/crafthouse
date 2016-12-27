@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+<style>
+    {% block head_css %}
+    .header-banner {
+        background: url({% if slider_image %}{{ slider_image }}{% else %}{% static 'images/banner.jpg' %}{% endif %});
+        background-size: cover;
+        min-height: 600px;
+        padding-top: 9em !important;
+        text-align: center;
+    }
+        .people{
+            background: url({% if service_image.image %}{{ service_image.image.url }}{% else %}{% static 'images/services.jpg' %}{% endif %})fixed;
+            min-height: 390px;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            -ms-background-size: cover;
+        }
+    {% endblock head_css %}
+</style>
+
+
+{% block jquery %}
+
+
+{% endblock jquery %}
+
+
+{% block content %}
+
+<div class="header-banner">
+	<!-- Top Navigation -->
+  <script src="{% static 'js/responsiveslides.min.js' %}"></script>
+  <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	nav: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+    </script>
+    <div class="slider">
+        <div class="container">
+            <div class="callbacks_container">
+                <ul class="rslides" id="slider">
+                    {% for slider_obj in slider_qs %}
+                        <li>
+                            <div class="slider-info">
+                                {% if slider_obj.heading %}
+                                    <h1><a href="{% url 'portfolio:home' %}"> {{ slider_obj.heading }} </a></h1>
+                                {% endif %}
+                                {% if slider_obj.description %}
+                                    <p>{{ slider_obj.description }}</p>
+                                {% endif %}
+                                {% if slider_obj.starting_price %}
+                                    <h2>Form <i>{{ slider_obj.starting_price }}</i></h2>
+                                {% endif %}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+        <div id="product" class="welcome">
+            <div class="container">
+                <h3>Products</h3><br>
+                <div class="row">
+                    {% for product in product_qs %}
+                        <div class="col-sm-4">
+                            <div class="thumbnail thumbnail-custom">
+                                {% if product.productimage_set.all %}
+                                    <img src="{{ product.productimage_set.first.image.url }}" alt="image" class="img-responsive  zoom-img">
+                                {% else %}
+                                    <img src="{% static 'images/no-image-available.jpg' %}" alt="image" class="img-responsive  zoom-img">
+                                {% endif %}
+                                <div class="caption">
+                                    <h2 class="text-center">{{ product.title }}</h2><hr>
+                                    <p class="lead">{{ product.description|truncatechars:50 }}</p>
+                                    <p><a href="{{ product.get_absolute_url }}" class="btn btn-default btn-block" role="button">Show More</a></p>
+                                </div>
+                            </div>
+                        {% cycle '</div>' '</div>' '</div></div><hr><div class="row">' %}
+                        {% empty %}
+                        <div class="col-sm-4 col-sm-offset-4 wl">
+                            <h2> No products here</h2>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <a href="{% url 'portfolio:product_list' %}" class="btn btn-default btn-lg">show more products <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div id="gallery" class="gallery">
+    <div class="container">
+        <h3 class="heading text-center">Gallery</h3>
+        <div class="gallery-bottom">
+            <div class="row">
+            {% for image in gallery_qs %}
+                <div class="col-sm-4 gallery-grid">
+                    <a class="example-image-link" href="{{ image.image.url }}" data-lightbox="example-set" data-title="{{ image.title }}"><img class="example-image" src="{{ image.image.url }}" alt=""/></a>
+                {% cycle '</div>' '</div>' '</div></div><div class="row">' %}
+            {% empty %}
+                <p class="lead"> Sorry no images :(</p>
+            {% endfor %}
+        </div>
+        </div>
+	</div>
+</div>
+<!---->
+
+
+{#    our services#}
+<div id="testimonials" class="people">
+    <div class="container">
+        <div class="people-top heading">
+            <h1 style="text-align: center; color: white">Our Services</h1>
+        </div>
+        <div class="people-bottom">
+            <div class="text-center" style="color: white; text-shadow: #080808 2px 2px 2px">
+                <br><h2>{{ service_image.heading }}</h2><br>
+                <p class="lead">{{ service_image.text }}</p>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

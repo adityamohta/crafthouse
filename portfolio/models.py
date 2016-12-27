@@ -88,6 +88,10 @@ def product_save_receiver(sender, instance, *args, **kwargs):
 pre_save.connect(product_save_receiver, sender=Product)
 
 
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product)
+    image = models.ImageField(upload_to="products/%Y/%m/%d/")
+
 def product_image_upload_to(instance, filename):
     title = instance.product.title
     return "products/%s/%s" % (title, filename)
@@ -97,5 +101,21 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product)
     image = models.ImageField(upload_to=product_image_upload_to)
 
+
     def __unicode__(self):
         return self.product.title
+
+
+class About(models.Model):
+    text_left = models.TextField(null=True, blank=True)
+    text_right = models.TextField(null=True, blank=True)
+
+
+class Member(models.Model):
+    name = models.CharField(max_length=255)
+    text = models.TextField(null=True, blank=True)
+    business_email = models.CharField(max_length=255, null=True, blank=True)
+    image = models.ImageField(upload_to="members/%Y/%m/%d/", null=True, blank=True)
+
+    def __unicode__(self):
+        return name

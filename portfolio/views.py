@@ -1,5 +1,17 @@
 from django.shortcuts import render, get_object_or_404
+
+from .models import (
+    Slider,
+    SliderBackground,
+    Product,
+    ServiceBackground,
+    GalleryImage,
+    About,
+    Member
+)
+
 from .models import Slider, SliderBackground, Product, ServiceBackground, GalleryImage
+
 
 
 def home(request):
@@ -56,7 +68,18 @@ def product_detail(request, id):
 
 
 def about(request):
-    context ={}
+
+    about_qs = About.objects.all()
+
+    members_qs = Member.objects.all()
+
+    context ={
+        "about_qs": about_qs,
+        "members_qs": members_qs
+    }
+
+
+
     return render(request, "about.html", context)
 
 
